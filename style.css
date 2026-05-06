@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&family=Great+Vibes&display=swap');
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Nunito', sans-serif;
+    background: #f0efea;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Animated glow blobs */
+.glow-blob {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(70px);
+}
+
+.glow-blob-1 {
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(circle, rgba(240, 112, 0, 0.18) 0%, transparent 70%);
+    top: -100px;
+    right: -100px;
+    animation: drift1 18s ease-in-out infinite alternate;
+}
+
+.glow-blob-2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(240, 112, 0, 0.1) 0%, transparent 70%);
+    bottom: -100px;
+    left: -100px;
+    animation: drift2 22s ease-in-out infinite alternate;
+}
+
+.glow-blob-3 {
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(255, 160, 50, 0.12) 0%, transparent 70%);
+    top: 50%;
+    left: 20%;
+    animation: drift3 15s ease-in-out infinite alternate;
+}
+
+@keyframes drift1 {
+    0%   { transform: translate(0px, 0px); }
+    25%  { transform: translate(-120px, 80px); }
+    50%  { transform: translate(-60px, 160px); }
+    75%  { transform: translate(-200px, 40px); }
+    100% { transform: translate(-80px, 120px); }
+}
+
+@keyframes drift2 {
+    0%   { transform: translate(0px, 0px); }
+    25%  { transform: translate(100px, -80px); }
+    50%  { transform: translate(200px, -40px); }
+    75%  { transform: translate(80px, -160px); }
+    100% { transform: translate(160px, -60px); }
+}
+
+@keyframes drift3 {
+    0%   { transform: translate(0px, 0px); }
+    33%  { transform: translate(120px, -100px); }
+    66%  { transform: translate(-80px, 80px); }
+    100% { transform: translate(60px, 120px); }
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    padding: 2rem 2.5rem;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(24px) saturate(1.6);
+    -webkit-backdrop-filter: blur(24px) saturate(1.6);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    border-radius: 32px;
+    box-shadow:
+        0 0 0 0.5px rgba(240, 112, 0, 0.12),
+        0 24px 64px rgba(180, 120, 60, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    width: 90%;
+    max-width: 440px;
+    height: 95vh;
+    height: 95dvh;
+    overflow: hidden;
+}
+
+.title-img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+}
+
+#connectWalletContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+#walletAddress {
+    visibility: hidden;
+    height: 28px;
+    font-size: 0.7rem;
+    color: #111;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 5px 16px;
+    border-radius: 999px;
+    word-break: break-all;
+}
+
+#connectWallet {
+    background: linear-gradient(135deg, #f07000 0%, #ff9a3c 100%);
+    color: #fff;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 999px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 0px;
+    max-width: 260px;
+    /* box-shadow: 0 4px 20px rgba(240, 112, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2); */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#connectWallet:hover {
+    transform: translateY(-1px);
+    /* box-shadow: 0 8px 28px rgba(240, 112, 0, 0.45), inset 0 0.5px 0 rgba(255, 255, 255, 0.2); */
+}
+
+#connectWallet:active {
+    transform: scale(0.96);
+}
+
+/* CM button */
+#clickButton {
+    position: relative;
+    width: clamp(145px, 45vw, 190px);
+    height: clamp(145px, 45vw, 190px);
+    border-radius: 50%;
+    border: 1.5px solid rgba(240, 112, 0, 0.45);
+    background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.7) 0%, rgba(240, 112, 0, 0.08) 60%, transparent 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    /* padding: 1em 0em; */
+    color: #f07000;
+    font-family: 'Nunito', sans-serif;
+    font-size: clamp(2.5rem, 10vw, 2.5rem);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow:
+        0 0 0 6px rgba(240, 112, 0, 0.05),
+        0 0 32px rgba(240, 112, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    -webkit-tap-highlight-color: transparent;
+}
+
+#clickButton::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border-radius: 50%;
+    border: 1px solid rgba(240, 112, 0, 0.1);
+    pointer-events: none;
+}
+
+#clickButton:hover:not(:disabled) {
+    background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.8) 0%, rgba(240, 112, 0, 0.15) 60%, transparent 100%);
+    border-color: rgba(240, 112, 0, 0.8);
+    color: #d96200;
+    box-shadow:
+        0 0 0 10px rgba(240, 112, 0, 0.07),
+        0 0 48px rgba(240, 112, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    transform: scale(1.05);
+}
+
+#clickButton:active:not(:disabled) {
+    transform: scale(0.96);
+}
+
+#clickButton:disabled {
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #ccc;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+.info {
+    font-size: 1rem;
+    min-height: 1.1em;
+    font-weight: 400;
+    width: 100%;
+}
+
+#status {
+    color: #000000;
+}
+
+#timer {
+    color: #f07000;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+/* Share on X button */
+#shareBtn {
+    display: inline-block;
+    text-decoration: none;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    color: #000000;
+    padding: 10px 24px;
+    border-radius: 999px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#shareBtn:hover {
+    border-color: #f07000;
+    color: #f07000;
+    background: rgba(240, 112, 0, 0.05);
+}
+
+#shareBtn:active {
+    transform: scale(0.96);
+}
+
+#bottomBar {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.8rem;
+    color: #111;
+    z-index: 2;
+    margin-top: auto;
+    padding-top: 0.5rem;
+}
+
+#bottomBar a {
+    color: #f07000;
+    text-decoration: none;
+}
+
+
+/* Mobile */
+@media (max-width: 520px) {
+    .container {
+        padding: 2.5rem 1.75rem;
+        gap: 2.2rem;
+        border-radius: 24px;
+        width: 92%;
+    }
+    #clickButton {
+        width: clamp(160px, 55vw, 220px);
+        height: clamp(160px, 55vw, 220px);
+    }
+    #connectWalletContainer {
+    gap: 1rem;
+    width: 100%;
+}
+
+    .glow-blob-1 { width: 320px; height: 320px; }
+    .glow-blob-2 { width: 260px; height: 260px; }
+    .glow-blob-3 { width: 180px; height: 180px; }
+}
